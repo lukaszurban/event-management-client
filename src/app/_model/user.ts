@@ -1,4 +1,5 @@
-import {Event} from '@angular/router';
+import {Event} from './event';
+
 
 export interface User {
   id?: number;

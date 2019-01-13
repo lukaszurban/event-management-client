@@ -19,4 +19,9 @@ export class EventService {
     return this.http.get<Event[]>(url);
   }
 
+  add(eventCreate: Event): Observable<Event> {
+    const url = this.apiUrl + '/events';
+    return this.http.post<Event>(url, eventCreate);
+  }
+
 }

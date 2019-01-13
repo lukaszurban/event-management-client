@@ -5,7 +5,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './_modules/material/material.module';
 import {HttpClientModule} from '@angular/common/http';
-import {MainNavComponent} from './main-nav/main-nav.component';
 import {MenuComponent} from './menu/menu.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {
@@ -20,14 +19,22 @@ import {
 } from '@angular/material';
 import {EventsComponent} from './events/events.component';
 import {UsersComponent} from './users/users.component';
+import {AddEventComponent} from './events/add-event/add-event.component';
+import {FormsModule} from '@angular/forms';
+import {TimesheetComponent} from './timesheet/timesheet.component';
+import {RegistrationComponent} from './registration/registration.component';
+import {LoginComponent} from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent,
     MenuComponent,
     EventsComponent,
-    UsersComponent
+    UsersComponent,
+    AddEventComponent,
+    TimesheetComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +49,14 @@ import {UsersComponent} from './users/users.component';
     MatListModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddEventComponent
+  ]
 })
 export class AppModule {
 }

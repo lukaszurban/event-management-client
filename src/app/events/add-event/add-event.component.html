@@ -1,0 +1,56 @@
+<!--<h4>Add event</h4>-->
+<!--<div class="form-container" style="background: burlywood">-->
+<!--<form #eventForm="ngForm" (ngSubmit)="onSubmit(eventForm.value)" >-->
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Name" type="text" class="form-control" id="name" name="name" required-->
+<!--[(ngModel)]="model.name" #nameField="ngModel">-->
+<!--</mat-form-field>-->
+
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Description" type="text" class="form-control" id="description" name="description" required-->
+<!--[(ngModel)]="model.description">-->
+<!--</mat-form-field>-->
+
+<!--<mat-form-field>-->
+<!--<input matInput placeholder="Location" type="text" class="form-control" id="location" name="location" required-->
+<!--[(ngModel)]="model.location">-->
+<!--</mat-form-field>-->
+
+<!--<mat-form-field>-->
+<!--&lt;!&ndash;<input matInput [matDatepicker]="myDatepicker" placeholder="Choose a date" name="date" type="date"&ndash;&gt;-->
+<!--<input matInput placeholder="Choose a date" name="date" type="string" class="form-control" id="date"-->
+<!--[(ngModel)]="model.date">-->
+<!--<mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>-->
+<!--<mat-datepicker #myDatepicker></mat-datepicker>-->
+<!--</mat-form-field>-->
+<!--<button type="submit" class="btn btn-success" [disabled]="!eventForm.form.valid">Submit</button>-->
+<!--</form>-->
+<!--</div>-->
+
+
+<h1 mat-dialog-title>Add event</h1>
+<div mat-dialog-content>
+  <form class="example-form" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <input matInput placeholder="Name" type="text" class="form-control" id="name" name="name" required
+             [(ngModel)]="model.name" #nameField="ngModel">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" type="text" class="form-control" id="description" name="description"
+             required
+             [(ngModel)]="model.description">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Location" type="text" class="form-control" id="location" name="location" required
+             [(ngModel)]="model.location">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Choose a date" name="date" type="string" class="form-control" id="date"
+             [(ngModel)]="model.date">
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+</div>

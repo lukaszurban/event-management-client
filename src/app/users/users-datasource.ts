@@ -1,5 +1,4 @@
 import {DataSource} from '@angular/cdk/collections';
-import {Event} from '../_model/event';
 import {Observable} from 'rxjs';
 import {User} from '../_model/user';
 import {UserService} from '../_service/user.service';
@@ -11,7 +10,7 @@ export class UsersDataSource extends DataSource<User> {
     super();
   }
 
-  connect(): Observable<Event[]> {
+  connect(): Observable<User[]> {
     return this.userService.getUsers();
   }
 

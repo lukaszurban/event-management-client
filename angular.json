@@ -135,5 +135,12 @@
       }
     }
   },
-  "defaultProject": "event-management-client"
+  "defaultProject": "event-management-client",
+  "schematics": {
+    "@schematics/angular": {
+      "component": {
+        "spec": false
+      }
+    }
+  }
 }
