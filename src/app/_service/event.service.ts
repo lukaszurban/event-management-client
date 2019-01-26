@@ -24,4 +24,14 @@ export class EventService {
     return this.http.post<Event>(url, eventCreate);
   }
 
+  edit(editEvent: Event): Observable<Event> {
+    const url = this.apiUrl + '/events/' + editEvent.id;
+    return this.http.put<Event>(url, editEvent);
+  }
+
+  delete(eventId: number): Observable<{}> {
+    const url = this.apiUrl + '/events/' + eventId;
+    return this.http.delete(url);
+  }
+
 }

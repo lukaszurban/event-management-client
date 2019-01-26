@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {MaterialModule} from './_modules/material/material.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MenuComponent} from './menu/menu.component';
 import {LayoutModule} from '@angular/cdk/layout';
 import {
@@ -20,10 +20,15 @@ import {
 import {EventsComponent} from './events/events.component';
 import {UsersComponent} from './users/users.component';
 import {AddEventComponent} from './events/add-event/add-event.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TimesheetComponent} from './timesheet/timesheet.component';
 import {RegistrationComponent} from './registration/registration.component';
 import {LoginComponent} from './login/login.component';
+import {JwtInterceptor} from './_guards/jwt.interceptor';
+import {AuthenticationService} from './_service/authentication.service';
+import {EventService} from './_service/event.service';
+import {UserService} from './_service/user.service';
+import { EditEventComponent } from './events/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,8 @@ import {LoginComponent} from './login/login.component';
     AddEventComponent,
     TimesheetComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule,
@@ -50,12 +56,19 @@ import {LoginComponent} from './login/login.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    EventService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent],
   entryComponents: [
-    AddEventComponent
+    AddEventComponent,
+    EditEventComponent
   ]
 })
 export class AppModule {

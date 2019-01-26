@@ -1,13 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <span class="spacer"></span>
-      <a href="/" routerLinkActive="active">Home</a>
-      <a href="/events" routerLinkActive="active">Events</a>
-      <a href="/users" routerLinkActive="active">Users
-        <mat-icon>input</mat-icon> Login
-      </a>
-      <a href="/register">Register</a>
+      <mat-toolbar-row>
+        <span class="spacer"></span>
+        <!--<a href="/" routerLinkActive="active">Home</a>-->
+        <a href="/events" routerLinkActive="active" *ngIf="loggedUser">Events</a>
+        <a href="/users" routerLinkActive="active" *ngIf="isAdmin">Users</a>
+        <a href="/login" routerLinkActive="active" *ngIf="!loggedUser">
+          <mat-icon>input</mat-icon>
+          Login
+        </a>
+        <a href="/register" *ngIf="!loggedUser">Register</a>
+        <button mat-button [matMenuTriggerFor]="userAction" *ngIf="loggedUser" routerLinkActive="active" >
+          <a>{{loggedUser?.firstName}} {{loggedUser?.lastName}}</a>
+        </button>
+        <mat-menu #userAction="matMenu">
+          <a (click)="logout()" *ngIf="loggedUser">Logout</a>
+        </mat-menu>
+      </mat-toolbar-row>
     </mat-toolbar>
     <ng-content></ng-content>
   </mat-sidenav-content>

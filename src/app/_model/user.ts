@@ -10,4 +10,5 @@ export interface User {
   password?: string;
   roles?: string[];
   events?: Event[];
+  token?: string;
 }

@@ -7,11 +7,31 @@ import {RegistrationComponent} from './registration/registration.component';
 import {LoginComponent} from './login/login.component';
 
 const routes: Routes = [
-  {path: 'events', component: EventsComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'timesheet', component: TimesheetComponent},
-  {path: 'register', component: RegistrationComponent},
-  {path: 'login', component: LoginComponent}
+  {
+    path: '',
+    component: LoginComponent
+  },
+  {
+    path: 'events',
+    component: EventsComponent
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    // canActivate: [AuthGuard]
+  },
+  {
+    path: 'timesheet',
+    component: TimesheetComponent
+  },
+  {
+    path: 'register',
+    component: RegistrationComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  }
 ];
 
 @NgModule({

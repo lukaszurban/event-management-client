@@ -3,7 +3,7 @@
     <mat-card-title>Events</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <button button="submit" mat-raised-button color="primary" (click)="openDialog()">
+    <button button="submit" class="add" mat-raised-button color="primary" (click)="openDialog()" *ngIf="isAdmin">
       <mat-icon>add</mat-icon> Add Event
     </button>
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -18,6 +18,20 @@
       <ng-container matColumnDef="description">
         <mat-header-cell *matHeaderCellDef> Description</mat-header-cell>
         <mat-cell *matCellDef="let event"> {{event.description}} {{event.location}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let event" (click)="edit(event)">
+          <mat-icon class="action" >edit</mat-icon>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let event" (click)="delete(event)">
+          <mat-icon class="action" >delete</mat-icon>
+        </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
