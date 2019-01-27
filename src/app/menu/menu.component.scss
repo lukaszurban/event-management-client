@@ -22,3 +22,23 @@ mat-toolbar a {
   color: #FFF;
   text-decoration: none;
 }
+
+.username {
+  font-size: 20px;
+}
+
+.user-button {
+  flex: 1 1 auto;
+  text-align: right;
+}
+
+.cdk-overlay-connected-position-bounding-box {
+  right: 50px !important;
+  width: auto !important;
+  left: auto !important;
+}
+
+.mat-menu-panel {
+  position: absolute !important;
+  right: 40px !important;
+}

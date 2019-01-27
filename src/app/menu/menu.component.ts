@@ -33,6 +33,9 @@ export class MenuComponent implements OnInit {
     this.userService.userEmitter.subscribe(user => {
       this.loggedUser = user;
       this.isAdmin = this.userService.isAdmin();
+      // if (!user) {
+      //   this.loggedUser = this.userService.getLoggedUser();
+      // }
     });
   }
 

@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {User} from '../_model/user';
 import {environment} from '../../environments/environment';
+import {Event} from '../_model/event';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,9 @@ export class UserService {
 
   readonly apiUrl: string = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.userEmitter = new EventEmitter();
+  }
 
   getUsers(): Observable<User[]> {
     const url = this.apiUrl + '/users';
@@ -30,6 +33,11 @@ export class UserService {
   delete(userId: number): Observable<{}> {
     const url = this.apiUrl + '/users/' + userId + '/disable';
     return this.http.put(url, userId);
+  }
+
+  addUsersEvent(userId: number, eventId: number): Observable<Event> {
+    const url = this.apiUrl + '/users/' + userId + '/mark-presence';
+    return this.http.post(url, eventId);
   }
 
   isUserLoggedIn(): boolean {
