@@ -1,0 +1,38 @@
+
+
+<mat-card class="main-card">
+  <mat-card-header>
+    <mat-card-title>Timesheet</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-nav-list style="background: coral">
+      <mat-list-item class="list" *ngFor="let user of users">
+        <p class="username"> {{user.firstName}} {{user.lastName}}</p>
+        <span class="items" *ngFor="let event of events">
+          <p  [ngClass]="{'present' : isUserPresent(user, event.id)}">{{event.date}}</p>
+          <mat-icon svgIcon="check-circle" *ngIf="isUserPresent(user, event.id)"></mat-icon>
+          <mat-icon svgIcon="uncheck-circle" *ngIf="!isUserPresent(user, event.id)"></mat-icon>
+        </span>
+      </mat-list-item>
+    </mat-nav-list>
+
+
+    <!--<mat-table [dataSource]="dataSourceUsers" class="mat-elevation-z8">-->
+
+    <!--<ng-container matColumnDef="user">-->
+    <!--<mat-header-cell *matHeaderCellDef> User </mat-header-cell>-->
+    <!--<mat-cell *matCellDef="let user"> {{user.firstName}} {{user.lastName}}</mat-cell>-->
+    <!--</ng-container>-->
+
+    <!--<ng-container matColumnDef="date">-->
+    <!--<mat-header-cell *matHeaderCellDef> Date </mat-header-cell>-->
+    <!--<mat-cell *matCellDef="let user" *ngFor="let u of users"> {{u.}}</mat-cell>-->
+    <!--</ng-container>-->
+
+    <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
+    <!--<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>-->
+    <!--</mat-table>-->
+
+
+  </mat-card-content>
+</mat-card>

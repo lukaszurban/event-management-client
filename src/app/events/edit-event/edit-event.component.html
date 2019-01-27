@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Edit event</h1>
+<div mat-dialog-content>
+  <form [formGroup]="editEventForm" (ngSubmit)="onSubmit()" class="my-form">
+    <mat-form-field>
+      <input matInput placeholder="Name" type="text" class="form-control" id="name" name="name" required
+             formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Description" type="text" class="form-control" id="description" name="description"
+             required
+             formControlName="description">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Location" type="text" class="form-control" id="location" name="location" required
+             formControlName="location">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Choose a date" name="date" type="string" class="form-control" id="date"
+             formControlName="date">
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Save</button>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button class="close" (click)="onNoClick()" color="warn">Cancel</button>
+</div>
