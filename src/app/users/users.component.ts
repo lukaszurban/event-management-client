@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatSort} from '@angular/material';
 import {UserService} from '../_service/user.service';
 import {UsersDataSource} from './users-datasource';
@@ -13,6 +13,9 @@ export class UsersComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
+
+  @Input()
+  loggedUser: User;
   dataSource = new UsersDataSource(this.userService);
   displayedColumns = ['data', 'contact', 'delete'];
 
@@ -20,6 +23,7 @@ export class UsersComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedUser = this.userService.getLoggedUser();
   }
 
   delete(user: User) {
