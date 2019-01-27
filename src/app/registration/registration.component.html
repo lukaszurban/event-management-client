@@ -1,0 +1,60 @@
+<mat-toolbar>
+  <span>Registration</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <!--<form class="registration-form" (ngSubmit)="register()">-->
+      <!--<mat-form-field class="full-width">-->
+        <!--<mat-label>Login</mat-label>-->
+        <!--<input  matInput  placeholder="Login" name="login"  required [(ngModel)]="model.login">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field class="full-width">-->
+        <!--<mat-label>First Name</mat-label>-->
+        <!--<input  matInput  placeholder="First name"  name="fname"  required [(ngModel)]="model.firstName">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field class="full-width">-->
+        <!--<mat-label>Last Name</mat-label>-->
+        <!--<input  matInput  placeholder="Last Name" name="lname"  required [(ngModel)]="model.lastName">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field class="full-width">-->
+        <!--<mat-label>Email</mat-label>-->
+        <!--<input  matInput  placeholder="Email" name="email" required [(ngModel)]="model.email">-->
+      <!--</mat-form-field>-->
+      <!--<mat-form-field class="full-width">-->
+        <!--<mat-label>Password</mat-label>-->
+        <!--<input  matInput  placeholder="Password"  name="password" required [(ngModel)]="model.password" [type]="'password'">-->
+      <!--</mat-form-field>-->
+    <!--</form>-->
+
+    <form [formGroup]="registerForm" class="registration-form" (ngSubmit)="register()">
+      <mat-form-field class="full-width">
+        <mat-label>Login</mat-label>
+        <input  matInput  placeholder="Login" name="login"  formControlName="login" required>
+        <mat-error *ngIf="login.invalid">{{getUsernameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>First Name</mat-label>
+        <input  matInput  placeholder="First name"  name="fname"  formControlName="firstName">
+        <mat-error *ngIf="firstName.invalid">{{getFirstNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Last Name</mat-label>
+        <input  matInput  placeholder="Last Name" name="lname"  required formControlName="lastName">
+        <mat-error *ngIf="lastName.invalid">{{getLastNameErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input  matInput  placeholder="Email" name="email" required formControlName="email">
+        <mat-error *ngIf="email.invalid">{{getEmailErrorMessage()}}</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input  matInput  placeholder="Password"  name="password" required formControlName="password" [type]="'password'">
+        <mat-error *ngIf="password.invalid">{{getPasswordErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="register()" color="primary" [disabled]="!registerForm.valid">REGISTER</button>
+  </mat-card-actions>
+</mat-card>
